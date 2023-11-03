@@ -1,0 +1,99 @@
+<!--******************************************************************************
+***
+*	ITE5315 – Assignment 2
+*	I declare that this assignment is my own work in accordance with Humber Academic Policy.
+*	No part of this assignment has been copied manually or electronically from any other source
+*	(including web sites) or distributed to other students.
+*
+*	Name: Saurabh Sharma 	Student ID: N01543808	Date: October 27, 2023 	
+*
+*
+******************************************************************************
+**-->
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <main>
+      {{#if body}}
+        <div id="message">
+          {{{body}}}
+        </div>
+      {{else}}
+        {{#if invoice}}
+          <div id="headmessage">
+            <h3>{{{heading}}}</h3>
+          </div>
+          <table>
+            <tr>
+              <th>Invoice Number</th>
+              <th>Manufacturer</th>
+              <th>Model</th>
+              <th>Class</th>
+              {{#if alldata}}
+              <th>Sales</th>
+              {{/if}}
+              <th>Price</th>
+              {{#if alldata}}
+              <th>Resale Value</th>
+              <th>Launch Date</th>
+              {{/if}}
+              <th>Image</th>
+            </tr>
+            {{#if (isArray invoice)}}
+            {{#if alldata}}
+            {{#each invoice}}
+                <tr class="{{#if (isBlank class)}}blank-row{{/if}}">
+                  <td>{{InvoiceNo}}</td>
+                  <td>{{splitmanufacture Manufacturer}}</td>
+                  <td>{{splitmodel Manufacturer}}</td>
+                  <td>{{class}}</td>
+                  <td>{{formatNumber Sales_in_thousands}}</td>
+                  <td>{{formatPrice Price_in_thousands}}</td>
+                  <td>{{formatPrice __year_resale_value}}</td>
+                  <td>{{Latest_Launch}}</td>
+                  <td><img
+                      src="{{image}}"
+                      alt="Product Image"
+                      style="max-width: 100px;"
+                    /></td>
+                </tr>
+              {{/each}}
+            {{else}}
+              {{#each invoice}}
+                <tr>
+                  <td>{{InvoiceNo}}</td>
+                  <td>{{splitmanufacture Manufacturer}}</td>
+                  <td>{{splitmodel Manufacturer}}</td>
+                  <td>{{class}}</td>
+                  <td>{{formatPrice Price_in_thousands}}</td>
+                  <td><img
+                      src="{{image}}"
+                      alt="Product Image"
+                      style="max-width: 100px;"
+                    /></td>
+                </tr>
+              {{/each}}
+              {{/if}}
+            {{else}}
+              <tr>
+                <td>{{invoice.InvoiceNo}}</td>
+                <td>{{splitmanufacture invoice.Manufacturer}}</td>
+                <td>{{splitmodel invoice.Manufacturer}}</td>
+                <td>{{invoice.class}}</td>
+                <td>{{formatPrice invoice.Price_in_thousands}}</td>
+                <td><img
+                    src="{{invoice.image}}"
+                    alt="Product Image"
+                    style="max-width: 100px;"
+                  /></td>
+              </tr>
+            {{/if}}
+          </table>
+        {{/if}}
+      {{/if}}
+    </main>
+  </body>
+</html>
