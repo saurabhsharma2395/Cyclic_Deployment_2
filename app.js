@@ -13,13 +13,12 @@
 
 //Import required libararies
 var express = require("express");
-const router = express.Router();
 var path = require("path");
 const fs = require("fs");
 var app = express();
 const exphbs = require("express-handlebars");
 const carSales = path.join(__dirname, "CarSales.json");
-const routes = require("./searchRouter");
+const routes = require("./searchRouter.js");
 
 app.use(express.urlencoded({ extended: true }));
 
