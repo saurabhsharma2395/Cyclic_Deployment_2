@@ -75,7 +75,7 @@ middleware = function (req, res, next) {
 };
 
 router
-  .route("/invoiceNo")
+  .route("/search/invoiceNo")
   .get(function (req, res) {
     res.render("search", {parameter: "Invoice Number", route: "/invoiceNo"});
   })
@@ -101,7 +101,7 @@ router
   });
 
 router
-  .route("/Manufacturer")
+  .route("/search/Manufacturer")
   .get(function (req, res) {
     res.render("search", {parameter: "Manufacturer",route: "/Manufacturer"});
   })

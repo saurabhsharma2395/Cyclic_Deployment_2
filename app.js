@@ -180,7 +180,7 @@ app.get("/data/invoiceNo/:index", [middleware], (req, res) => {
 });
 
 //Step 6: search route
-app.use("/search", routes);
+app.use("/", routes);
 
 //Step 7: Alldata route
 app.get("/alldata", [middleware], (req, res) => {
